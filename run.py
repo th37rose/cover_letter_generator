@@ -6,9 +6,6 @@ import gradio as gr
 GITHUB_LINK = "https://github.com/stackdev37"
 
 """Prompt Template"""
-JOB_DESCRIPTION = """
-I require a program that can automatically redirect links from emails to specific pre-defined Telegram chats. The program should link email accounts to corresponding phone numbers in Telegram. Python or any other suitable language can be used for the implementation.
-"""
 
 """Please describe your experience with your reent job."""
 YOUR_EXPERIENCE = """
@@ -43,7 +40,7 @@ def run(job_desc: str) -> str:
     template = f"""
     This is the Job Description.
     ###
-    {JOB_DESCRIPTION}
+    {job_desc}
     
     This is my github profile.
     ###
