@@ -95,7 +95,7 @@ def run(
 """run gradio demo"""
 inputs = [
     gr.inputs.Textbox(lines=1, placeholder="Enter your open_ai_key here..."),
-    gr.inputs.Textbox(lines=2, placeholder="Enter the job description here..."),
+    gr.inputs.Textbox(lines=15, placeholder="Enter the job description here..."),
     gr.inputs.Textbox(
         lines=1, placeholder="Enter your company name, where you've worked recently..."
     ),
