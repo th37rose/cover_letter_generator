@@ -18,7 +18,12 @@ jobs:
           fetch-depth: 0
           lfs: true
       - name: Push to hub
-        env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run:
-          git push https://thomas3737:$HF_TOKEN@huggingface.co/spaces/thomas3737/car_team main --force
+        run: |
+          echo "${{ secrets.HF_TOKEN }}" | huggingface-cli login
+          git clone https://huggingface.co/spaces/thomas3737/car_team
+          
+          cp -r auto_cover_letter/* car_team/
+          cd car_team
+          git add .
+          git commit -m "Update from GitHub repository"
+          git push
