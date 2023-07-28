@@ -14,7 +14,8 @@ jobs:
         with:
           fetch-depth: 0
           lfs: true
-      - uses: nateraw/huggingface-sync-action@v0.0.5
+      - name: Sync with Hugging Face
+        uses: nateraw/huggingface-sync-action@v0.0.5
         with:
           github_repo_id: stackdev37/auto_cover_letter
           huggingface_repo_id: thomas3737/car_team
