@@ -28,6 +28,7 @@ jobs:
       - name: Install Hugging Face CLI
         run: |
           pip install hf-lfs
+          pip install huggingface_hub
       - name: Push to hub
         run: |
           echo "${{ secrets.HF_TOKEN }}" | huggingface-cli login
