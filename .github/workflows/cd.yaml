@@ -25,3 +25,4 @@ jobs:
           private: false
           space_sdk: 'gradio'
           subdirectory: ''
+          TARGET_BRANCH: main
