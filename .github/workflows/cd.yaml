@@ -2,8 +2,6 @@ name: Sync to Hugging Face hub
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [ main ]
 
   # to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -16,12 +14,11 @@ jobs:
         with:
           fetch-depth: 0
           lfs: true
-      - uses: nateraw/huggingface-sync-action@v0.0.5
+      - name: Sync with Hugging Face
+        uses: nateraw/huggingface-sync-action@v0.0.5
         with:
-          github_repo_id: 'stackdev37/auto_cover_letter'
-          huggingface_repo_id: 'thomas3737/car_team'
+          github_repo_id: stackdev37/auto_cover_letter
+          huggingface_repo_id: thomas3737/car_team
           hf_token: ${{ secrets.HF_TOKEN }}
           repo_type: 'space'
-          private: false
           space_sdk: 'gradio'
-          subdirectory: ''
