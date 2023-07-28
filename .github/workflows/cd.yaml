@@ -13,11 +13,21 @@ on:
 jobs:
   sync-to-hub:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
         with:
-          fetch-depth: 0
-          lfs: true
+          python-version: '3.10.16'
+
+      - name: Install git-lfs
+        run: |
+          sudo apt-get install git-lfs
+
+      - name: Install Hugging Face CLI
+        run: |
+          pip install hf-lfs
       - name: Push to hub
         run: |
           echo "${{ secrets.HF_TOKEN }}" | huggingface-cli login
