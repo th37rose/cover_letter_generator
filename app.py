@@ -13,7 +13,7 @@ KEY_WORDS = """
 """
 
 TEMPLATE_COVER_LETTER = """
-Hi, I am a Java software engineer with over eight years of professional experience.
+Hi, I am a seasoned software engineer with over eight years of professional experience.
 
 ###
 My experiences with those tech stack which was mentioned in the job post. 
