@@ -89,9 +89,13 @@ inputs = [
     gr.inputs.Textbox(lines=1, placeholder="Enter your github here..."),
     gr.inputs.Checkbox(label="Do you want Sample Code as well?"),
 ]
+# outputs = [
+#     gr.inputs.Textbox(lines=7, placeholder="Cover Letter"),
+#     gr.inputs.Textbox(lines=7, placeholder="Sample Code"),
+# ]
 outputs = [
-    gr.inputs.Textbox(lines=7, placeholder="Cover Letter"),
-    gr.inputs.Textbox(lines=7, placeholder="Sample Code"),
+    gr.outputs.Textbox(label="Cover Letter"),
+    gr.outputs.Textbox(label="Sample Code"),
 ]
 demo = gr.Interface(fn=run, inputs=inputs, outputs=outputs)
 
