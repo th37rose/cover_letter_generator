@@ -1,34 +1,15 @@
-from common.utils import OPENAI_API_KEY, ERROR_OPENAI_KEY, ERROR_JOB_DESC, ERROR_COMPANY, ERROR_GITHUB
+from common.prompts import TEMPLATE_COVER_LETTER, KEY_WORDS, get_template_cover_letter
+from common.utils import (
+    OPENAI_API_KEY,
+    ERROR_OPENAI_KEY,
+    ERROR_JOB_DESC,
+    ERROR_COMPANY,
+    ERROR_GITHUB,
+)
+from llms.code_gens import gen_codes
 from llms.gpt_llm import GptLLM
 from langchain.docstore.document import Document
 import gradio as gr
-
-GITHUB_LINK = "https://github.com/stackdev37"
-
-"""Prompt Template"""
-
-"""Please mention all keywords."""
-KEY_WORDS = """
- java, python, node.js, GraphQL, vue, react, nest, next, ai, dl, gcp, aws, azure, kubernetes, docker, microservice, gpt, chatbot, frontend, backend, video streamming, devops, CI/CD, mysql, mongodb, postgresql or etc
-"""
-
-TEMPLATE_COVER_LETTER = """
-Hi, I am a Java software engineer with over eight years of professional experience.
-
-###
-My experiences with those tech stack which was mentioned in the job post. 
-
-###
-Trying to give the hot keywords they are looking for. 
-
-###
-Asking to have a meeting or call to discuss in more detail. 
-
-###
-Attaching my git profile for their reference. 
-
-Best regards,
-"""
 
 """main method to get the expected output"""
 
@@ -37,10 +18,11 @@ def run(
     openai_key="",
     job_description: str = "",
     your_company: str = "",
-    your_github: str = GITHUB_LINK,
+    your_github: str = "",
     code_sample: bool = False,
-) -> str:
+):
     # generating prompts & query
+    tmp_cl = get_template_cover_letter(code_sample=code_sample)
     template = f"""
     This is the Job Description.
     ###
@@ -55,11 +37,12 @@ def run(
     {your_company}
     
     This is the expected cover letter template. 
-    {TEMPLATE_COVER_LETTER}
+    {tmp_cl}
     """
 
     query = f"""
     Please analysis the job description step by step and give me a well-written cover letter following the cover letter template I shared with you.
+    And also think of finding out a troubleshooting or one of best approach with those tech stack.
     If the job description would include some special technology stack or field, please focus on those technology stack and generate my work experience with them. 
     The technology stack means {KEY_WORDS}.
     Then, I don't want it in written style English and you should update it into Speaking American English. It is very important that I don't want written style english for the cover letter.
@@ -87,9 +70,13 @@ def run(
     chain = gpt_llm.get_chain()
     # get chain data / result
     print("engine: started")
-    chain_data = chain.run(input_documents=docs, question=query)
-    print("engine: completed successfully")
-    return chain_data
+
+    if code_sample:
+        # generate cover letter with some sample code.
+        return chain.run(input_documents=docs, question=query), gen_codes(
+            chain, job_description
+        )
+    return chain.run(input_documents=docs, question=query), ""
 
 
 """run gradio demo"""
@@ -102,7 +89,10 @@ inputs = [
     gr.inputs.Textbox(lines=1, placeholder="Enter your github here..."),
     gr.inputs.Checkbox(label="Do you want Sample Code as well?"),
 ]
-
-demo = gr.Interface(fn=run, inputs=inputs, outputs="text")
+outputs = [
+    gr.inputs.Textbox(lines=7, placeholder="Cover Letter"),
+    gr.inputs.Textbox(lines=7, placeholder="Sample Code"),
+]
+demo = gr.Interface(fn=run, inputs=inputs, outputs=outputs)
 
 demo.launch()
