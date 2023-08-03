@@ -1,4 +1,4 @@
-"""Prompt Template"""
+"""The Best Prompt Template"""
 
 """Please mention all keywords."""
 KEY_WORDS = """
