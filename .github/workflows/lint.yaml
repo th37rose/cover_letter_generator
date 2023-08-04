@@ -1,4 +1,4 @@
-name: Brain Lint with black
+name: Auto cover letter Lint with black
 
 on: [push, pull_request]
 
