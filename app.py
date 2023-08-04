@@ -25,7 +25,7 @@ def run(openai_key="",
         your_github: str = "",
         code_sample: bool = False):
     """
-        Preprocess job description, company, and Github profile.
+        Preprocess job description, company, and GitHub profile.
         Generate the cover letter and optional sample code.
     """
 
@@ -67,25 +67,29 @@ def run(openai_key="",
     return chain.run(input_documents=docs, question=QUERIES[cover_letter_template]), ""
 
 
-# Define input fields and labels for the Gradio Interface
+def launch_app():
+    # Define input fields and labels for the Gradio Interface
 
-inputs = [
-    gr.inputs.Textbox(lines=1, placeholder="Enter your open_ai_key here..."),
-    gr.inputs.Dropdown(SELECT_COVER_LETTER_TEMPLATE, default=SELECT_COVER_LETTER_TEMPLATE[0],
-                       label="Choose your cover letter template..."),
-    gr.inputs.Textbox(lines=15, placeholder="Enter the job description here..."),
-    gr.inputs.Textbox(
-        lines=1, placeholder="Enter your company name, where you've worked recently..."
-    ),
-    gr.inputs.Textbox(lines=1, placeholder="Enter your github here..."),
-    gr.inputs.Checkbox(label="Do you want Sample Code as well?"),
-]
+    inputs = [
+        gr.inputs.Textbox(lines=1, placeholder="Enter your open_ai_key here..."),
+        gr.inputs.Dropdown(SELECT_COVER_LETTER_TEMPLATE, default=SELECT_COVER_LETTER_TEMPLATE[0],
+                           label="Choose your cover letter template..."),
+        gr.inputs.Textbox(lines=15, placeholder="Enter the job description here..."),
+        gr.inputs.Textbox(
+            lines=1, placeholder="Enter your company name, where you've worked recently..."
+        ),
+        gr.inputs.Textbox(lines=1, placeholder="Enter your github here..."),
+        gr.inputs.Checkbox(label="Do you want Sample Code as well?"),
+    ]
 
-outputs = [
-    gr.outputs.Textbox(label="Cover Letter"),
-    gr.outputs.Textbox(label="Sample Code"),
-]
+    outputs = [
+        gr.outputs.Textbox(label="Cover Letter"),
+        gr.outputs.Textbox(label="Sample Code"),
+    ]
 
-# Initialize and launch the Gradio Interface
-demo = gr.Interface(fn=run, inputs=inputs, outputs=outputs)
-demo.launch()
+    # Initialize and launch the Gradio Interface
+    demo = gr.Interface(fn=run, inputs=inputs, outputs=outputs)
+    demo.launch()
+
+if __name__ == "__main__":
+    launch_app()
