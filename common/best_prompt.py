@@ -5,6 +5,11 @@ KEY_WORDS = """
  java, python, node.js, GraphQL, vue, react, nest, next, ai, dl, gcp, aws, azure, kubernetes, docker, microservice, gpt, chatbot, frontend, backend, video streamming, devops, CI/CD, mysql, mongodb, postgresql or etc
 """
 
+"""Please add some emotions."""
+EMOTIONS = """
+✨, ❤, 🙋‍♀️, 😍, 🚀, 🎯, ✔, 🔺, 🧡, 💛, 💚, 💙, 💜, 🤎, 🖤, 💔, ❣, 💕, 💞, 💓, 💗, 💖, 💘, 💝
+"""
+
 BASIC_HEAD_TMP_COVER_LETTER = """
 Hi, I am a seasoned software engineer with over eight years of professional experience.
 

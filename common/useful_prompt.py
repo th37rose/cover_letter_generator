@@ -9,7 +9,9 @@ First, I'd want you to look at this URL, which is comparable to your project on 
 Provide rough timeline and cost as a senior software engineer.
 
 While reviewing your requirements, I have a few quick questions regarding the job:
-[write 2~3 questions about the job description]
+[write some technical questions about the job description]
+-
+-
 ...
 
 I am a experienced full stack engineer with over 8 years of professional experience.
