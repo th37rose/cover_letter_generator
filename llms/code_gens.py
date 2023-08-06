@@ -12,9 +12,13 @@ def gen_codes(chain: BaseCombineDocumentsChain, job_description: str) -> str:
     {job_description}
     """
     query = """
-    Please analysis the job description or the requirement step by step to find out a troubleshooting or one of best approach. 
-    And then please give me some programming codes to reflect my professional with those technology stack in development.
-    You are a helpful code assistant that can teach a junior developer how to code. Your language of choice is the programming language what they are specifically looking for . Don't explain the code, just generate the code block itself.
+    Please analysis the job description or the requirement step by step to find out a troubleshooting or one of best 
+    approach. 
+    And then please give me some programming codes to reflect my professional with those technology stack in 
+    development.
+    You are a helpful code assistant that can teach a junior developer how to code. Your language of choice is the 
+    programming language what they are specifically looking for . Don't explain the code, just generate the code block 
+    itself.
     """
     docs = []
     docs.append(Document(page_content=template, metadata=""))

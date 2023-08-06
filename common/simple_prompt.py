@@ -1,5 +1,6 @@
 """The Simplate Prompt Template"""
 
+
 HEAD_TMP_COVER_LETTER = """
 Hi, thanks for your job posting!
 
