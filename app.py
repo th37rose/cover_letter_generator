@@ -18,25 +18,30 @@ TEMPLATES = {
 }
 
 
-
-def run(openai_key="",
-        cover_letter_template=SELECT_COVER_LETTER_TEMPLATE[0],
-        job_description: str = "",
-        your_company: str = "",
-        your_github: str = "",
-        code_sample: bool = False,
-        additional_question1: str = "",
-        additional_question2: str = "",
-        additional_question3: str = "",
-        additional_question4: str = "",
-        additional_question5: str = ""
-        ):
+def run(
+    openai_key="",
+    cover_letter_template=SELECT_COVER_LETTER_TEMPLATE[0],
+    job_description: str = "",
+    your_company: str = "",
+    your_github: str = "",
+    code_sample: bool = False,
+    additional_question1: str = "",
+    additional_question2: str = "",
+    additional_question3: str = "",
+    additional_question4: str = "",
+    additional_question5: str = "",
+):
     """
-        Preprocess job description, company, and GitHub profile.
-        Generate the cover letter and optional sample code.
+    Preprocess job description, company, and GitHub profile.
+    Generate the cover letter and optional sample code.
     """
-    questions_array = [additional_question1, additional_question2, additional_question3, additional_question4,
-                       additional_question5]
+    questions_array = [
+        additional_question1,
+        additional_question2,
+        additional_question3,
+        additional_question4,
+        additional_question5,
+    ]
 
     # Create the template with variable fields
     template = f"""
@@ -69,20 +74,35 @@ def run(openai_key="",
     chain = gpt_llm.get_chain()
 
     # Generate answers for additional questions
-    answers_array = [chain.run(input_documents=docs, question=QUESTIONS_TEMPLATE + question) if question else "" for
-                     question in
-                     questions_array]
+    answers_array = [
+        chain.run(input_documents=docs, question=QUESTIONS_TEMPLATE + question)
+        if question
+        else ""
+        for question in questions_array
+    ]
 
     # Check if code samples are requested; if so, generate them
     if code_sample:
-        return chain.run(input_documents=docs, question=QUERIES[cover_letter_template]), \
-            gen_codes(chain, job_description), answers_array[0], answers_array[1], answers_array[2], answers_array[3], \
-            answers_array[4]
+        return (
+            chain.run(input_documents=docs, question=QUERIES[cover_letter_template]),
+            gen_codes(chain, job_description),
+            answers_array[0],
+            answers_array[1],
+            answers_array[2],
+            answers_array[3],
+            answers_array[4],
+        )
 
     # cover letter
-    return chain.run(input_documents=docs, question=QUERIES[cover_letter_template]), "", answers_array[0], \
-        answers_array[1], answers_array[2], answers_array[3], answers_array[4]
-
+    return (
+        chain.run(input_documents=docs, question=QUERIES[cover_letter_template]),
+        "",
+        answers_array[0],
+        answers_array[1],
+        answers_array[2],
+        answers_array[3],
+        answers_array[4],
+    )
 
 
 def launch_app():
@@ -90,11 +110,15 @@ def launch_app():
 
     inputs = [
         gr.inputs.Textbox(lines=1, placeholder="Enter your open_ai_key here..."),
-        gr.inputs.Dropdown(SELECT_COVER_LETTER_TEMPLATE, default=SELECT_COVER_LETTER_TEMPLATE[0],
-                           label="Choose your cover letter template..."),
+        gr.inputs.Dropdown(
+            SELECT_COVER_LETTER_TEMPLATE,
+            default=SELECT_COVER_LETTER_TEMPLATE[0],
+            label="Choose your cover letter template...",
+        ),
         gr.inputs.Textbox(lines=15, placeholder="Enter the job description here..."),
         gr.inputs.Textbox(
-            lines=1, placeholder="Enter your company name, where you've worked recently..."
+            lines=1,
+            placeholder="Enter your company name, where you've worked recently...",
         ),
         gr.inputs.Textbox(lines=1, placeholder="Enter your github here..."),
         gr.inputs.Textbox(lines=1, placeholder="Additional question 1"),
@@ -119,6 +143,6 @@ def launch_app():
     demo = gr.Interface(fn=run, inputs=inputs, outputs=outputs)
     demo.launch()
 
+
 if __name__ == "__main__":
     launch_app()
-
