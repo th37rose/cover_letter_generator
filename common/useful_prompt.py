@@ -1,9 +1,11 @@
 """The Useful Prompt Template"""
 
+
 HEAD_TMP_COVER_LETTER = """
 Good day there, 
 
-First, I'd want you to look at this URL, which is comparable to your project on which I worked: https://github.com/given github username
+First, I'd want you to look at this URL, which is comparable to your project on which I worked: 
+https://github.com/given github username
 
 ###
 Provide rough timeline and cost as a senior software engineer.

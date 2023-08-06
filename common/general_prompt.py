@@ -1,5 +1,6 @@
 """The General Prompt Template"""
 
+
 HEAD_TMP_COVER_LETTER = """
 Hi, I am a senior full Stack developer with over 8 years of experience who has rich experience in the several 
 industries like LMS, Ecommerce, Survey, Travel, Medical and so on.

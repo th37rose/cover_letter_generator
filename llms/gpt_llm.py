@@ -4,6 +4,7 @@ from typing import Any
 from langchain.chat_models import ChatOpenAI
 from langchain.chains.question_answering import load_qa_chain
 
+
 class GptLLM:
     def __init__(self, openai_key: str, model: str = "gpt-4", temperature: float = 0.6):
         self.key = openai_key
