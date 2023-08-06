@@ -94,12 +94,12 @@ inputs = [
         lines=1, placeholder="Enter your company name, where you've worked recently..."
     ),
     gr.inputs.Textbox(lines=1, placeholder="Enter your github here..."),
-    gr.inputs.Checkbox(label="Do you want Sample Code as well?"),
     gr.inputs.Textbox(lines=1, placeholder="Additional question 1"),
     gr.inputs.Textbox(lines=1, placeholder="Additional question 2"),
     gr.inputs.Textbox(lines=1, placeholder="Additional question 3"),
     gr.inputs.Textbox(lines=1, placeholder="Additional question 4"),
     gr.inputs.Textbox(lines=1, placeholder="Additional question 5"),
+    gr.inputs.Checkbox(label="Do you want Sample Code as well?"),
 ]
 
 outputs = [
