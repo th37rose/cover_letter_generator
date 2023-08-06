@@ -24,12 +24,12 @@ def run(
     job_description: str = "",
     your_company: str = "",
     your_github: str = "",
-    code_sample: bool = False,
     additional_question1: str = "",
     additional_question2: str = "",
     additional_question3: str = "",
     additional_question4: str = "",
     additional_question5: str = "",
+    code_sample: bool = False,
 ):
     """
     Preprocess job description, company, and GitHub profile.
