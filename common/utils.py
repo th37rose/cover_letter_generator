@@ -72,3 +72,9 @@ QUERIES = {
         Please generate its greetings and farewells randomly in the cover letter every time.
     """,
 }
+
+
+QUESTIONS_TEMPLATE = """
+Write a cool and well-written technical answer about 3 sentences.
+I don't want written style english, write as speaking English.
+"""

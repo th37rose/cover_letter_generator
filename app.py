@@ -3,7 +3,7 @@ from common.best_prompt import get_template_cover_letter
 from common.general_prompt import GENERAL_TMP_COVER_LETTER
 from common.simple_prompt import TECH_TMP_COVER_LETTER
 from common.useful_prompt import QUESTION_TMP_COVER_LETTER
-from common.utils import SELECT_COVER_LETTER_TEMPLATE, QUERIES
+from common.utils import SELECT_COVER_LETTER_TEMPLATE, QUERIES, QUESTIONS_TEMPLATE
 from llms.code_gens import gen_codes
 from llms.gpt_llm import GptLLM
 from langchain.docstore.document import Document
@@ -25,11 +25,23 @@ def run(
     your_company: str = "",
     your_github: str = "",
     code_sample: bool = False,
+    additional_question1: str = "",
+    additional_question2: str = "",
+    additional_question3: str = "",
+    additional_question4: str = "",
+    additional_question5: str = "",
 ):
     """
     Preprocess job description, company, and GitHub profile.
     Generate the cover letter and optional sample code.
     """
+    questions_array = [
+        additional_question1,
+        additional_question2,
+        additional_question3,
+        additional_question4,
+        additional_question5,
+    ]
 
     # Create the template with variable fields
     template = f"""
@@ -61,13 +73,36 @@ def run(
     gpt_llm = GptLLM(openai_key=openai_key)
     chain = gpt_llm.get_chain()
 
+    # Generate answers for additional questions
+    answers_array = [
+        chain.run(input_documents=docs, question=QUESTIONS_TEMPLATE + question)
+        if question
+        else ""
+        for question in questions_array
+    ]
+
     # Check if code samples are requested; if so, generate them
     if code_sample:
-        return chain.run(
-            input_documents=docs, question=QUERIES[cover_letter_template]
-        ), gen_codes(chain, job_description)
+        return (
+            chain.run(input_documents=docs, question=QUERIES[cover_letter_template]),
+            gen_codes(chain, job_description),
+            answers_array[0],
+            answers_array[1],
+            answers_array[2],
+            answers_array[3],
+            answers_array[4],
+        )
 
-    return chain.run(input_documents=docs, question=QUERIES[cover_letter_template]), ""
+    # cover letter
+    return (
+        chain.run(input_documents=docs, question=QUERIES[cover_letter_template]),
+        "",
+        answers_array[0],
+        answers_array[1],
+        answers_array[2],
+        answers_array[3],
+        answers_array[4],
+    )
 
 
 def launch_app():
@@ -86,12 +121,22 @@ def launch_app():
             placeholder="Enter your company name, where you've worked recently...",
         ),
         gr.inputs.Textbox(lines=1, placeholder="Enter your github here..."),
+        gr.inputs.Textbox(lines=1, placeholder="Additional question 1"),
+        gr.inputs.Textbox(lines=1, placeholder="Additional question 2"),
+        gr.inputs.Textbox(lines=1, placeholder="Additional question 3"),
+        gr.inputs.Textbox(lines=1, placeholder="Additional question 4"),
+        gr.inputs.Textbox(lines=1, placeholder="Additional question 5"),
         gr.inputs.Checkbox(label="Do you want Sample Code as well?"),
     ]
 
     outputs = [
         gr.outputs.Textbox(label="Cover Letter"),
         gr.outputs.Textbox(label="Sample Code"),
+        gr.outputs.Textbox(label="Answer 1"),
+        gr.outputs.Textbox(label="Answer 2"),
+        gr.outputs.Textbox(label="Answer 3"),
+        gr.outputs.Textbox(label="Answer 4"),
+        gr.outputs.Textbox(label="Answer 5"),
     ]
 
     # Initialize and launch the Gradio Interface
