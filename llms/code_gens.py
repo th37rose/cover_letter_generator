@@ -20,8 +20,7 @@ def gen_codes(chain: BaseCombineDocumentsChain, job_description: str) -> str:
     programming language what they are specifically looking for . Don't explain the code, just generate the code block 
     itself.
     """
-    docs = []
-    docs.append(Document(page_content=template, metadata=""))
+    docs = [Document(page_content=template, metadata="")]
 
     print("engine: started to generate sample codes")
     result = chain.run(input_documents=docs, question=query)

@@ -75,6 +75,5 @@ QUERIES = {
 
 
 QUESTIONS_TEMPLATE = """
-Write a cool and well-written technical answer about 3 sentences.
-I don't want written style english, write as speaking English.
+Write a cool and well-written technical answer about 3-4 sentences as speaking English randomly.
 """
