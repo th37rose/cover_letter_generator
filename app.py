@@ -1,6 +1,7 @@
 # Importing necessary libraries and modules
 from common.best_prompt import get_template_cover_letter
 from common.general_prompt import GENERAL_TMP_COVER_LETTER
+from common.blockchain_prompt import BLOCKCHAIN_TMP_COVER_LETTER
 from common.simple_prompt import TECH_TMP_COVER_LETTER
 from common.useful_prompt import QUESTION_TMP_COVER_LETTER
 from common.utils import SELECT_COVER_LETTER_TEMPLATE, QUERIES, QUESTIONS_TEMPLATE
@@ -15,6 +16,7 @@ TEMPLATES = {
     "Simplest Template - Technical Solution": TECH_TMP_COVER_LETTER,
     "General Template - Skill set & Code": GENERAL_TMP_COVER_LETTER,
     "Useful Template - A Few Question": QUESTION_TMP_COVER_LETTER,
+    "Blockchain Template": BLOCKCHAIN_TMP_COVER_LETTER,
 }
 
 
