@@ -37,14 +37,12 @@ QUERIES = {
         step!
     """,
     "Simplest Template - Technical Solution": f"""
-        I am going to make a bid with very short and smart 4~5 sentences based on this job requirement following the 
-        cover letter template I shared with you.
-
-        Include cool technical solution for this job requirement including {KEY_WORDS} as a software engineer.
+        Please analysis the job description step by step and give me a well-written, smart and very short cover letter 
+        in 4~5 sentences following the cover letter template I shared with you.
         
-        The technology stack means {KEY_WORDS}.
+        And include cool technical solution for this job requirement as a senior software engineer.
 
-        And describe similar project with this job as experience.
+        In addition, describe similar project with this job as experience.
         
         Please generate its greetings and farewells randomly with {EMOTIONS} at the start and the end of greetings in 
         the cover letter every time. Please do that step by step!
