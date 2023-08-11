@@ -7,12 +7,18 @@ Customizing Consensus(POS/POW), Crypto-exchange, Ethereum, Wallets and crypto-bo
 blockchain websites, web portals, & smart contracts applications development.
 
 ###
+Explain why you are interest in blockchain and crypto with advantages of them in a few sentences.
+
+###
+Write the rich and specific experience in among of finance, gaming/crypto gaming, blockchain, or crypto protocools.
+
+###
 In addition, give me one sample code regarding this job description - not general - by your work experience. 
 
 ###
 Write some skill sets regarding to this job description.
 - Crypto tokens:
-- cryptocurrencies:
+- Cryptocurrencies:
 - Crypto  algorithms: 
 - Back-End:
 - Front-End:
