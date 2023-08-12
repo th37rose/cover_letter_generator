@@ -19,7 +19,7 @@ In addition, give me one sample code regarding this job description - not genera
 Write some skill sets regarding to this job description.
 - Crypto tokens:
 - Cryptocurrencies:
-- Crypto  algorithms: 
+- Crypto algorithms: 
 - Back-End:
 - Front-End:
 - DevOps:
