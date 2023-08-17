@@ -11,6 +11,7 @@ ERROR_JOB_DESC = "Please input job description"
 ERROR_COMPANY = "Please input company name"
 ERROR_GITHUB = "Please input github link"
 
+
 # dropdown option list
 SELECT_COVER_LETTER_TEMPLATE = [
     "Best Template - Normal",
@@ -18,6 +19,9 @@ SELECT_COVER_LETTER_TEMPLATE = [
     "Useful Template - A Few Question",
     "General Template - Skill set & Code",
 ]
+
+# dropdown option list for gpt model
+SELECT_GPT_MODEL = ["gpt-3.5-turbo", "gpt-4"]
 
 
 # Define the specific queries for each template

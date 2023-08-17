@@ -3,7 +3,12 @@ from common.best_prompt import get_template_cover_letter
 from common.general_prompt import GENERAL_TMP_COVER_LETTER
 from common.simple_prompt import TECH_TMP_COVER_LETTER
 from common.useful_prompt import QUESTION_TMP_COVER_LETTER
-from common.utils import SELECT_COVER_LETTER_TEMPLATE, QUERIES, QUESTIONS_TEMPLATE
+from common.utils import (
+    SELECT_COVER_LETTER_TEMPLATE,
+    QUERIES,
+    QUESTIONS_TEMPLATE,
+    SELECT_GPT_MODEL,
+)
 from llms.code_gens import gen_codes
 from llms.gpt_llm import GptLLM
 from langchain.docstore.document import Document
@@ -20,6 +25,7 @@ TEMPLATES = {
 
 def run(
     openai_key="",
+    gpt_model=SELECT_GPT_MODEL[0],
     cover_letter_template=SELECT_COVER_LETTER_TEMPLATE[0],
     job_description: str = "",
     your_company: str = "",
@@ -70,7 +76,7 @@ def run(
     docs = [Document(page_content=template, metadata="")]
 
     # Initialize the GptLLM model &  generate chain data
-    gpt_llm = GptLLM(openai_key=openai_key)
+    gpt_llm = GptLLM(openai_key=openai_key, model=gpt_model)
     chain = gpt_llm.get_chain()
 
     # Generate answers for additional questions
@@ -110,6 +116,11 @@ def launch_app():
 
     inputs = [
         gr.inputs.Textbox(lines=1, placeholder="Enter your open_ai_key here..."),
+        gr.inputs.Dropdown(
+            SELECT_GPT_MODEL,
+            default=SELECT_GPT_MODEL[0],
+            label="Choose your gpt model",
+        ),
         gr.inputs.Dropdown(
             SELECT_COVER_LETTER_TEMPLATE,
             default=SELECT_COVER_LETTER_TEMPLATE[0],
