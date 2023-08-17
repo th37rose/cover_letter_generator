@@ -3,7 +3,12 @@ from common.best_prompt import get_template_cover_letter
 from common.general_prompt import GENERAL_TMP_COVER_LETTER
 from common.simple_prompt import TECH_TMP_COVER_LETTER
 from common.useful_prompt import QUESTION_TMP_COVER_LETTER
-from common.utils import SELECT_COVER_LETTER_TEMPLATE, QUERIES, QUESTIONS_TEMPLATE, SELECT_GPT_MODEL
+from common.utils import (
+    SELECT_COVER_LETTER_TEMPLATE,
+    QUERIES,
+    QUESTIONS_TEMPLATE,
+    SELECT_GPT_MODEL,
+)
 from llms.code_gens import gen_codes
 from llms.gpt_llm import GptLLM
 from langchain.docstore.document import Document
