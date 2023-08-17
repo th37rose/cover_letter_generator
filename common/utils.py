@@ -19,6 +19,12 @@ SELECT_COVER_LETTER_TEMPLATE = [
     "General Template - Skill set & Code",
 ]
 
+# dropdown option list for gpt model
+SELECT_GPT_MODEL = [
+    "gpt-4",
+    "gpt-3.5-turbo"
+]
+
 
 # Define the specific queries for each template
 QUERIES = {
