@@ -18,6 +18,7 @@ SELECT_COVER_LETTER_TEMPLATE = [
     "Simplest Template - Technical Solution",
     "Useful Template - A Few Question",
     "General Template - Skill set & Code",
+    "Blockchain Template",
 ]
 
 # dropdown option list for gpt model
@@ -72,6 +73,18 @@ QUERIES = {
         It is very important that I don't want written style english for the cover letter.
         
         Please generate its greetings and farewells randomly in the cover letter every time.
+    """,
+    "Blockchain Template": f"""
+        Please analysis ths job description step by step and give me real technical cover letter following the cover 
+        letter template I shared with you, with work experience and skill set.
+
+        With this, the proposal must be smart and clear. And blockchain work experience must be shown reality - not general.
+
+        Then, I don't want it in written style English and you should update it into Speaking American English, but it has the system as follows.
+        It is very important that I don't want written style english for the cover letter.
+
+        Please generate its greetings and farewells randomly in the cover letter every time. Please do that step by 
+        step!
     """,
 }
 
