@@ -11,6 +11,9 @@ pinned: false
 license: other
 ---
 
+![aaaaa](https://github.com/th37rose/cover_letter_generator/assets/105904959/8326b28f-13ee-48a7-b747-8eeedf5de36e)
+
+
 # auto_cover_letter
 It is used to generate a cover letter to apply for a job. 
 
