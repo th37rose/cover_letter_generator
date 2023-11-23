@@ -5,7 +5,7 @@ colorFrom: yellow
 colorTo: indigo
 app_file: app.py
 sdk: gradio
-sdk_version: 2.9.1
+sdk_version: 3.14.0
 python_version: 3.10.12
 pinned: false
 license: other

@@ -22,7 +22,7 @@ SELECT_COVER_LETTER_TEMPLATE = [
 ]
 
 # dropdown option list for gpt model
-SELECT_GPT_MODEL = ["gpt-3.5-turbo", "gpt-4"]
+SELECT_GPT_MODEL = ["gpt-4-1106-preview", "gpt-3.5-turbo", "gpt-4"]
 
 
 # Define the specific queries for each template
