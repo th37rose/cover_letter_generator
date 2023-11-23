@@ -17,6 +17,9 @@ license: other
 # auto_cover_letter
 It is used to generate a cover letter to apply for a job. 
 
+# try demo deployed in huggingface
+https://huggingface.co/spaces/thomas3737/car_team
+
 # how to run
 1. Install all the packages with requirements.txt
 2. Run the engine (python app.py)
