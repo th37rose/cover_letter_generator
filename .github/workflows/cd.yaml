@@ -14,11 +14,8 @@ jobs:
         with:
           fetch-depth: 0
           lfs: true
-      - name: Sync with Hugging Face
-        uses: nateraw/huggingface-sync-action@v0.0.5
-        with:
-          github_repo_id: stackdev37/auto_cover_letter
-          huggingface_repo_id: thomas3737/car_team
-          hf_token: ${{ secrets.HF_TOKEN }}
-          repo_type: 'space'
-          space_sdk: 'gradio'
+      - name: Push to hub
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run:
+          git push https://posix4e:$HF_TOKEN@huggingface.co/spaces/thomas3737/car_team main
