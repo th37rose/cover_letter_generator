@@ -1,4 +1,4 @@
 openai
 langchain
-gradio==3.34.0
+gradio ~> 4.11.0
 pytest
